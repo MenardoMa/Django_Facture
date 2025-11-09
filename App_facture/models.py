@@ -24,7 +24,7 @@ class Customer(models.Model):
         verbose_name_plural = "Customers"
 
     def __str__(self):
-        return "f{self.name}"
+        return self.name
 
 class Invoice(models.Model):
     """
@@ -42,7 +42,7 @@ class Invoice(models.Model):
     invoice_date_time = models.DateTimeField(auto_now_add=True)
     total    = models.DecimalField(max_digits=10000, decimal_places=2)
     last_update_date  = models.DateTimeField(null=True, blank=True)
-    paid     = models.BooleanField(default=True)
+    paid     = models.BooleanField(default=False)
     invoice_type = models.CharField(max_length=1, choices=INVOICE_TYPE)
     comments = models.TextField(null=True, blank=True, default='', max_length=1000)
         
@@ -51,7 +51,7 @@ class Invoice(models.Model):
         verbose_name_plural = "Invoices"
 
     def __str__(self):
-        return "f{self.customer.name} {self.invoice_date_time}"
+        return f"{self.customer.name} {self.invoice_date_time}"
     
     """
     Decorateur Property Permet d'acceder a une methode comme etant une proprieter
@@ -72,6 +72,9 @@ class Article(models.Model):
     class Meta:
         verbose_name = "Article"
         verbose_name_plural = "Articles"
+
+    def __str__(self):
+        return "f{self.invoice}"
 
     """
     Decorateur Property Permet d'acceder a une methode comme etant une proprieter
