@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-6 offset-md-3">
+    {% if form.errors %}
+        {% for field in form %}
+            {% if field.errors %}
+                {{field.errors}}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <h2 class="mb-3">add Customer</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="row mb-3">
+            <div class="col">
+                {{form.name}}
+            </div>
+            <div class="col">
+                {{form.email}}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                {{form.phone}}
+            </div>
+            <div class="col">
+                {{form.address}}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                {{ form.sex }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                {{form.age}}
+            </div>
+            <div class="col">
+                {{form.city}}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                {{form.zip_code}}
+            </div>
+             <div class="col">
+                {{form.user}}
+            </div>
+        </div>
+
+    
+        <button type="submit" class="btn btn-secondary">Enregistrer</button>
+    </form>
+</div>
+{% endblock content %}
