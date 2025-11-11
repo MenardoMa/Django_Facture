@@ -1,15 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="col-md-6 offset-md-3">
-    {% if form.errors %}
-        {% for field in form %}
-            {% if field.errors %}
-                {{field.errors}}
-            {% endif %}
-        {% endfor %}
+   {% if form.errors %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            You Form Has Errors
+            {% for field in form %}
+                {% if field.errors %}
+                    {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     {% endif %}
-    <h2 class="mb-3">add Customer</h2>
+
+    {% if etat %}
+        <h2 class="mb-3">Invoice</h2>
+      <form method="POST">
+        <div class="row mb-3">
+            <div class="col">
+            {{form.customer}}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer Facture</button>
+      </form>
+    {% else %}
+    <h2 class="mb-3">Customer</h2>
     <form method="post">
         {% csrf_token %}
 
@@ -50,13 +67,14 @@
             <div class="col">
                 {{form.zip_code}}
             </div>
-             <div class="col">
-                {{form.user}}
-            </div>
         </div>
 
     
         <button type="submit" class="btn btn-secondary">Enregistrer</button>
     </form>
+    {% endif %}
+
+   
 </div>
+
 {% endblock content %}

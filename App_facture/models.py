@@ -11,7 +11,7 @@ class Customer(models.Model):
     name   = models.CharField(max_length=100)
     email  = models.EmailField()
     phone  = models.CharField(max_length=100)
-    adress = models.CharField(max_length=100)
+    adress = models.CharField(max_length=255)
     sex    = models.CharField(max_length=1, choices=SEX_TYPE)
     age    = models.CharField(max_length=12)
     city   = models.CharField(max_length=100)

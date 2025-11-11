@@ -2,8 +2,8 @@
 
 {% block content %}
     <div class="my-3">
-        <a href="" class="btn btn-primary">New Invoice</a>
-        <a href="{% url 'addCustomer' %}" class="btn btn-secondary">Register a new customer</a>
+        <a href="{% url 'facture:addInvoice' %}" class="btn btn-primary">New Invoice</a>
+        <a href="{% url 'facture:addCustomer' %}" class="btn btn-secondary">Register a new customer</a>
     </div>
    {% if invoices %}
     <table class="table table-striped table-hover table-sm">
